@@ -18,12 +18,19 @@ fn check(p: &std::path::PathBuf) -> Option<&'static Config> {
 }
 
 fn run(c: &Config) {
-    std::process::Command::new(c.0)
+    let output = std::process::Command::new(c.0)
         .args(c.1)
+        .args(std::env::args().skip(1))
         .spawn()
         .unwrap()
         .wait_with_output()
         .unwrap();
+    if let Some(s) = output.status.code() {
+        std::process::exit(s);
+    }
+    if !output.status.success() {
+        std::process::exit(1);
+    }
 }
 
 fn main() {
