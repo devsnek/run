@@ -11,7 +11,7 @@ const CONFIGS: Configs = &[
 fn check(p: &std::path::PathBuf) -> Option<&'static Config> {
     for (name, c) in CONFIGS {
         if p.join(name).exists() {
-            return Some(c)
+            return Some(c);
         }
     }
     None
@@ -43,9 +43,17 @@ fn main() {
         match current.parent() {
             Some(c) => current = c.to_owned(),
             None => {
-                eprintln!("Unable to find config");
+                eprintln!("Unable to find config!");
+                eprintln!(
+                    "Supported configs:\n{}",
+                    CONFIGS
+                        .iter()
+                        .map(|c| "- ".to_owned() + c.0)
+                        .collect::<Vec<String>>()
+                        .join("\n")
+                );
                 std::process::exit(1);
-            },
+            }
         }
     }
 }
