@@ -1,12 +1,12 @@
 type Config = (&'static str, &'static [&'static str]);
 type Configs = &'static [(&'static str, Config)];
 const CONFIGS: Configs = &[
+    ("clid", ("./clid", &[])),
     ("package.json", ("npm", &["run"])),
     ("Makefile", ("make", &[])),
     ("Cargo.toml", ("cargo", &["run"])),
     ("binding.gyp", ("node-gyp", &[])),
     ("gradlew", ("./gradlew", &["run"])),
-    ("clid", ("./clid", &[])),
 ];
 
 fn check(p: &std::path::PathBuf) -> Option<&'static Config> {
