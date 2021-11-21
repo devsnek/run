@@ -7,6 +7,7 @@ const CONFIGS: Configs = &[
     ("Cargo.toml", ("cargo", &["run"])),
     ("binding.gyp", ("node-gyp", &[])),
     ("gradlew", ("./gradlew", &["run"])),
+    ("stack.yaml", ("stack", &[])),
 ];
 
 fn check(p: &std::path::PathBuf) -> Option<&'static Config> {
