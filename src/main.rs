@@ -1,7 +1,7 @@
 type Config = (&'static str, &'static [&'static str]);
 type Configs = &'static [(&'static str, Config)];
 const CONFIGS: Configs = &[
-    ("clid", ("./clid", &[])),
+    ("clyde", ("./clyde", &[])),
     ("package.json", ("npm", &["run"])),
     ("Makefile", ("make", &[])),
     ("Cargo.toml", ("cargo", &["run"])),
